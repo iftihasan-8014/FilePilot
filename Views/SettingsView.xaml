@@ -1,0 +1,85 @@
+<UserControl x:Class="FilePilot.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Background="Transparent">
+        <StackPanel Margin="32,16,32,32" MaxWidth="700" HorizontalAlignment="Left">
+
+            <!-- Page Header -->
+            <TextBlock Text="Settings" FontSize="24" FontWeight="Bold"
+                       Foreground="{StaticResource AppOnSurfaceBrush}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Manage your FilePilot preferences and configurations."
+                       FontSize="13"
+                       Foreground="{StaticResource AppOnSurfaceVariantBrush}"
+                       Margin="0,0,0,28" />
+
+            <!-- Auto-Start Section -->
+            <Border Background="{StaticResource AppBackgroundBrush}"
+                    CornerRadius="12" Padding="20" Margin="0,0,0,16"
+                    BorderBrush="{StaticResource AppSurfaceVariantBrush}"
+                    BorderThickness="1">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Left" VerticalAlignment="Center">
+                        <TextBlock Text="Launch on Startup" FontSize="14" FontWeight="SemiBold"
+                                   Foreground="{StaticResource AppOnSurfaceBrush}" />
+                        <TextBlock Text="Start FilePilot automatically when Windows starts."
+                                   FontSize="12"
+                                   Foreground="{StaticResource AppOnSurfaceVariantBrush}"
+                                   Margin="0,4,0,0" />
+                    </StackPanel>
+                    <ToggleButton DockPanel.Dock="Right"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center"
+                                  IsChecked="{Binding IsAutoStartEnabled}"
+                                  Command="{Binding ToggleAutoStartCommand}"
+                                  Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+                </DockPanel>
+            </Border>
+
+            <!-- Monitoring Section -->
+            <Border Background="{StaticResource AppBackgroundBrush}"
+                    CornerRadius="12" Padding="20" Margin="0,0,0,16"
+                    BorderBrush="{StaticResource AppSurfaceVariantBrush}"
+                    BorderThickness="1">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Left" VerticalAlignment="Center">
+                        <TextBlock Text="Real-Time Monitoring" FontSize="14" FontWeight="SemiBold"
+                                   Foreground="{StaticResource AppOnSurfaceBrush}" />
+                        <TextBlock FontSize="12"
+                                   Foreground="{StaticResource AppOnSurfaceVariantBrush}"
+                                   Margin="0,4,0,0">
+                            <Run Text="Watching: " />
+                            <Run Text="{Binding MonitoredFolder, Mode=OneWay}" />
+                        </TextBlock>
+                    </StackPanel>
+                    <ToggleButton DockPanel.Dock="Right"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center"
+                                  IsChecked="{Binding IsMonitoringEnabled}"
+                                  Command="{Binding ToggleMonitoringCommand}"
+                                  Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+                </DockPanel>
+            </Border>
+
+            <!-- Info Footer -->
+            <Border Background="{StaticResource AppBackgroundBrush}"
+                    CornerRadius="12" Padding="20"
+                    BorderBrush="{StaticResource AppSurfaceVariantBrush}"
+                    BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="About FilePilot" FontSize="14" FontWeight="SemiBold"
+                               Foreground="{StaticResource AppOnSurfaceBrush}"
+                               Margin="0,0,0,8" />
+                    <TextBlock FontSize="12" Foreground="{StaticResource AppOnSurfaceVariantBrush}">
+                        <Run Text="Version 1.0.0 — Built with WPF, CommunityToolkit.Mvvm, and SQLite." />
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
